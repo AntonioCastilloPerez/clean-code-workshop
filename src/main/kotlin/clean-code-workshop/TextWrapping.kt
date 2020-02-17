@@ -27,7 +27,7 @@ class TextWrapping {
 
     private fun subtractBlanks(input: String, maxLineLength: Int): String {
         return if (maxLineLength < input.length) {
-            subtractBlanks(input.replaceFirst(" ", ""), maxLineLength)
+            subtractBlanks(input.replaceFirst("  ", " "), maxLineLength)
         } else return input
     }
 
