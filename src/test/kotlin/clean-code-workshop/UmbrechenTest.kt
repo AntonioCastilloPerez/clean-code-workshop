@@ -3,7 +3,7 @@ package `clean-code-workshop`
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 
-class TextWrappingTest {
+class UmbrechenTest {
     @Test
     fun `from a string create a list with every element`() {
 
@@ -16,7 +16,7 @@ class TextWrappingTest {
                 Pair("Nacht,", 6)
         )
 
-        Assertions.assertThat(TextWrapping().textSplitAndCount(input, maxLineLength = 9)).isEqualTo(expectedOutput)
+        Assertions.assertThat(Umbrechen().textSplitAndCount(input, maxLineLength = 9)).isEqualTo(expectedOutput)
 
     }
 
@@ -36,7 +36,7 @@ class TextWrappingTest {
 
         val maxLength = 3
 
-        Assertions.assertThat(TextWrapping().textSplitAndCount(input, maxLength)).isEqualTo(expectedOutput)
+        Assertions.assertThat(Umbrechen().textSplitAndCount(input, maxLength)).isEqualTo(expectedOutput)
 
     }
 
@@ -62,7 +62,7 @@ class TextWrappingTest {
                 "Sternlein",
                 "blinken,"
         )
-        Assertions.assertThat(TextWrapping().formatLines(input, maxlength)).isEqualTo(expectedOutput)
+        Assertions.assertThat(Umbrechen().formatLines(input, maxlength)).isEqualTo(expectedOutput)
 
     }
 
@@ -87,7 +87,7 @@ class TextWrappingTest {
                 "hernieder",
                 "sinken."
         )
-        Assertions.assertThat(TextWrapping().Umbrechen(input, maxlength, false)).isEqualTo(expectedOutput)
+        Assertions.assertThat(Umbrechen().umbrechen(input, maxlength, false)).isEqualTo(expectedOutput)
 
     }
 
@@ -105,7 +105,7 @@ class TextWrappingTest {
                 "Schneeflöcklein   leis",
                 "hernieder      sinken."
         )
-        Assertions.assertThat(TextWrapping().Umbrechen(input, maxlength, true)).isEqualTo(expectedOutput)
+        Assertions.assertThat(Umbrechen().umbrechen(input, maxlength, true)).isEqualTo(expectedOutput)
 
     }
 

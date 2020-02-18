@@ -1,28 +1,30 @@
 package `clean-code-workshop`
 
-class TextWrapping {
+class Umbrechen {
 
-    fun Umbrechen(text: String, maxLineLength: Int, indent: Boolean): List<String> {
+    fun umbrechen(text: String, maxLineLength: Int, indent: Boolean): List<String> {
 
         val brakedDownText = textSplitAndCount(text, maxLineLength)
         val formatted = formatLines(brakedDownText, maxLineLength)
 
-        return if (indent) justifyLines(formatted, maxLineLength) else formatted
+        return if (indent) justifyText(formatted, maxLineLength) else formatted
     }
 
-    private fun justifyLines(formatted: List<String>, maxLineLength: Int): List<String> {
+    private fun justifyText(formatted: List<String>, maxLineLength: Int): List<String> {
         val numOfCharsInText = formatted.fold(0) { sum, element -> sum.plus(element.length) }
         val numberOfExpectedCharsInText = formatted.size * maxLineLength
 
         return if (numOfCharsInText != numberOfExpectedCharsInText) {
-            justifyLines(formatted.map {
-                when {
-                    it.length < maxLineLength -> addBlanks(it, maxLineLength)
-                    it.length > maxLineLength -> subtractBlanks(it, maxLineLength)
-                    else -> it
-                }
-            }, maxLineLength)
+            justifyText(formatted.map { justifyLine(it, maxLineLength) }, maxLineLength)
         } else return formatted
+    }
+
+    private fun justifyLine(it: String, maxLineLength: Int): String {
+        return when {
+            it.length < maxLineLength -> addBlanks(it, maxLineLength)
+            it.length > maxLineLength -> subtractBlanks(it, maxLineLength)
+            else -> it
+        }
     }
 
     private fun subtractBlanks(input: String, maxLineLength: Int): String {
@@ -36,7 +38,6 @@ class TextWrapping {
             addBlanks(input.replace(" ", "  "), maxLineLength)
         } else return input
     }
-
 
     fun textSplitAndCount(text: String, maxLineLength: Int): List<Pair<String, Int>> {
         return text.split(" ").map { it.chunked(maxLineLength) }.flatten().map { it to it.length }
