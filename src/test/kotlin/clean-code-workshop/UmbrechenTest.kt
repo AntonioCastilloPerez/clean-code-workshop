@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 
 class UmbrechenTest {
+
     @Test
     fun `from a string create a list with every element`() {
 
