@@ -9,3 +9,5 @@ build
 out/*
 */out/*
 *.hprof
+
+resources/output.txt
